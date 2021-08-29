@@ -1,0 +1,20 @@
+server:
+  port: 9001
+spring:
+  application:
+    name: account-service
+  datasource:
+    url: jdbc:postgresql://localhost:5432/webapp?currentSchema=account-service
+    username: postgres
+    password: admin
+    driver-class-name: org.postgresql.Driver
+  liquibase:
+    change-log: classpath:/db/changelog/db-changelog-master.xml
+    enabled: true
+  jooq:
+    sql-dialect: postgres
+eureka:
+  client:
+    register-with-eureka: true
+  instance:
+    instance-id: ${spring.application.name}:${random.uuid}
